@@ -1,0 +1,108 @@
+#include <iostream>
+#include <string>
+
+
+class Wallet {
+    private:
+        
+        int* first = new int;
+        int* second = new int;
+
+    public:
+
+        Wallet(int &first, int &second) {
+            
+            if ((first == 50) | (first == 100) | (first == 200) | (first == 500) | (first == 1000) | (first == 2000) | (first == 5000)) { 
+
+                this->first = &first;
+                this->second = &second;
+
+                std::cout << "Создан кошелек\nНоминал купюр - " << *this->first << "\nКоличество купюр- " << *this->second << '\n';   
+            }
+
+            else {
+                std::cout << "Неверный номинал купюры\n";
+                exit;
+            }
+        };
+
+        ~Wallet() {
+            delete &this->first;
+            delete &this->second;
+            std::cout << "Экземпляр класса удален\n";
+        };
+
+        void display() {
+            std::cout << "Номинал купюры - " << *this->first << "\nВКоличество купюр - " << *this->second << '\n';
+        };
+
+        // void summa() {
+        //     std::cout << "Денежная сумма купюр составляет" << ((&this->first) * (&this->second)) << 
+        // }
+};
+
+
+int main() {
+
+    int first = 50;
+    int second = 20;
+    Wallet a(first, second);
+    
+    first = 50;
+    second = 1;
+    Wallet b(first, second);
+
+    a.display();
+    b.display();
+
+    
+}
+
+
+#include <iostream>
+#include <string>
+
+
+class SampleClass {
+    private:
+        std::string first = std::string("");
+        std::string second = std::string("");
+
+        int first = new int(0);
+        
+
+
+    public:
+
+        SampleClass(std::string &first, std::string &second) {
+            this->first = first;
+            this->second = second;
+
+            std::cout << "Создан экземлпяр класса со следующими полями:\nПервое поле - " << this->first << "\nВторое- " << this->second << '\n';   
+        };
+
+        ~SampleClass() {
+            std::cout << "Объек "
+        };
+
+        void display() {
+            std::cout << "Первое поле - " << this->first << "\nВторое поле - " << this->second << '\n';
+        };
+};
+
+
+int main() {
+
+    std::string first = "Hello";
+    std::string second = "World";
+    SampleClass a(first, second);
+    
+    first = "Привет";
+    second = "Мир";
+    SampleClass b(first, second);
+
+    a.display();
+    b.display();
+
+    
+}
